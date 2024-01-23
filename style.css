@@ -13,7 +13,14 @@ body{
 #logo{
     color: white;
     font-family: "Abril Fatface";
+    text-shadow: 0 0 5px cyan,
+    0 0 25px cyan;
 }
+/* #logo:hover{
+  text-shadow: 0 0 5px cyan,
+  0 0 25px cyan , 0 0 50px cyan,
+  0 0 100px cyan, 0 0 200px cyan;
+} */
 
 .nav-header{
     min-height: 10vh;
@@ -25,9 +32,13 @@ body{
     width: 80%;
     margin: auto;
     padding: 2rem 0rem;
+    position: relative;
+    z-index: 2;
 }
 
 .line1,.line2{
+    box-shadow: 0 0 5px cyan,
+    0 0 25px cyan;
     width: 3rem;
     height: 0.2rem;
     margin: 0.4rem;
@@ -63,6 +74,7 @@ body{
     overflow: hidden;
   }
   .hero-img img {
+    
     max-width: 600px;
     height: auto;
     object-fit: cover; 
@@ -151,8 +163,8 @@ body{
     top: -15%;
   }
   .cursor{
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     border: 2px solid white;
     border-radius: 50%;
     position: absolute;
@@ -213,3 +225,7 @@ body{
   .scrollMagic-pin-spacer{
     position: static !important;
   }
+
+body.hide{
+  overflow: hidden;
+}
