@@ -104,56 +104,56 @@ function navToggle(e) {
 }
 //barba page transitions
 
-// function barbaTransition(e) {
-//   barba.init({
-//     views: [
-//       {
-//         namespace: "home",
-//         beforEnter() {
-//           animateSlides();
-//         },
-//         beforeLeave() {
-//           if (slideScene) slideScene.destroy();
-//           if (pageScene) pageScene.destroy();
-//           if (controller) controller.destroy();
-//         },
-//       },
-//       {
-//         namespace: "supra",
-//       },
-//     ],
-//     transitions: [
-//       {
-//         leave({ current, next }) {
-//           let done = this.async();
-//           //an animation
-//           const t1 = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-//           t1.fromTo(
-//             current.container,
-//             1,
-//             { opacity: 1 },
-//             { opacity: 0, onComplete: done }
-//           );
-//         },
-//         enter({ current, next }) {
-//           let done = this.async();
-//           //scroll 
-//           //an animation
-//           const t2 = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-//           t1.fromTo(
-//             next.container,
-//             1,
-//             { opacity: 0 },
-//             { opacity: 1, onComplete: done }
-//           );
-//         },
-//       },
-//     ],
-//   });
-// }
+function barbaTransition(e) {
+  barba.init({
+    views: [
+      {
+        namespace: "home",
+        beforEnter() {
+          animateSlides();
+        },
+        beforeLeave() {
+          if (slideScene) slideScene.destroy();
+          if (pageScene) pageScene.destroy();
+          if (controller) controller.destroy();
+        },
+      },
+      {
+        namespace: "supra",
+      },
+    ],
+    transitions: [
+      {
+        leave({ current, next }) {
+          let done = this.async();
+          //an animation
+          const t1 = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+          t1.fromTo(
+            current.container,
+            1,
+            { opacity: 1 },
+            { opacity: 0, onComplete: done }
+          );
+        },
+        enter({ current, next }) {
+          let done = this.async();
+          //scroll 
+          //an animation
+          const t1 = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+          t1.fromTo(
+            next.container,
+            1,
+            { opacity: 0 },
+            { opacity: 1, onComplete: done }
+          );
+        },
+      },
+    ],
+  });
+}
 
 //eventlistner
-// document.addEventListener("DOMContentLoaded", barbaTransition);
+document.addEventListener("DOMContentLoaded", barbaTransition);
 burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
