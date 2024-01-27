@@ -102,60 +102,99 @@ function navToggle(e) {
     document.body.classList.remove("hide");
   }
 }
-//barba page transitions
 
-function barbaTransition(e) {
-  barba.init({
-    views: [
-      {
-        namespace: "home",
-        beforEnter() {
-          animateSlides();
-        },
-        beforeLeave() {
-          if (slideScene) slideScene.destroy();
-          if (pageScene) pageScene.destroy();
-          if (controller) controller.destroy();
-        },
+//barba page transitions
+const logo = document.querySelector("#logo");
+// function barbaTransition(e) {
+barba.init({
+  views: [
+    {
+      namespace: "home",
+      beforeEnter() {
+        animateSlides();
+        logo.href = "./index.html";
       },
-      {
-        namespace: "supra",
+      beforeLeave() {
+        slideScene.destroy();
+        pageScene.destroy();
+        controller.destroy();
       },
-    ],
-    transitions: [
-      {
-        leave({ current, next }) {
-          let done = this.async();
-          //an animation
-          const t1 = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-          t1.fromTo(
-            current.container,
-            1,
-            { opacity: 1 },
-            { opacity: 0, onComplete: done }
-          );
-        },
-        enter({ current, next }) {
-          let done = this.async();
-          //scroll 
-          //an animation
-          const t1 = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-          t1.fromTo(
-            next.container,
-            1,
-            { opacity: 0 },
-            { opacity: 1, onComplete: done }
-          );
-        },
+    },
+    {
+      namespace: "mustang1969",
+      beforeEnter() {
+        logo.href = "../index.html";
       },
-    ],
-  });
-}
+    },
+    {
+      namespace: "rrwraith",
+      beforeEnter() {
+        logo.href = "../index.html";
+      },
+    },
+    {
+      namespace: "rrvelar",
+      beforeEnter() {
+        logo.href = "../index.html";
+      },
+    },
+    {
+      namespace: "aventador",
+      beforeEnter() {
+        logo.href = "../index.html";
+      },
+    },
+    {
+      namespace: "dodge",
+      beforeEnter() {
+        logo.href = "../index.html";
+      },
+    },
+    {
+      namespace: "supra",
+      beforeEnter() {
+        logo.href = "../index.html";
+      },
+    },
+  ],
+  transitions: [
+    {
+      leave({ current, next }) {
+        let done = this.async();
+        //an animation
+        const t1 = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+        t1.fromTo(current.container, 1, { opacity: 1 }, { opacity: 0 });
+        t1.fromTo(
+          ".swipe",
+          0.75,
+          { x: "-100%" },
+          { x: "0%", onComplete: done },
+          "-=0.5"
+        );
+      },
+      enter({ current, next }) {
+        let done = this.async();
+        //scroll to the top
+        window.scrollTo(0, 0);
+        //an animation
+        const t1 = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+        t1.fromTo(
+          ".swipe",
+          1,
+          { x: "0%" },
+          { x: "100%", stagger: 0.5, onComplete: done }
+        );
+        t1.fromTo(next.container, 1, { opacity: 0 }, { opacity: 1 });
+      },
+    },
+  ],
+});
+// }
 
 //eventlistner
-document.addEventListener("DOMContentLoaded", barbaTransition);
+// document.addEventListener("DOMContentLoaded", barbaTransition);
 burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
 
-animateSlides();
+// animateSlides();
